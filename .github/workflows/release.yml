@@ -22,9 +22,9 @@ jobs:
     runs-on: ubuntu-latest #,darwin
     steps:
       -name: Install ko
-        run: go install github.com/google/ko@latest
+       run: go install github.com/google/ko@latest
 
- 
+
   
   
 
