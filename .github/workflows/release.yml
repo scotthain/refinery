@@ -2,7 +2,6 @@ name: Release the refinery binaries
 on:
   push:
     branches:
-      - main
       - 'shain/**'
 jobs:
   go-build:
