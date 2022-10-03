@@ -17,11 +17,12 @@ jobs:
           run |
             256sum $GOPATH/bin/refinery-<< parameters.os >>-<< parameters.arch >> \
             > $GOPATH/bin/refinery-<< parameters.os >>-<< parameters.arch >>.checksum
-  setup_googlekoq
-    runs-on: ubuntu-latest
+
+  setup_googlekoq:
+    runs-on: ubuntu-latest #,darwin
     steps:
       -name: Install ko
-      -run: go install github.com/google/ko@latest
+       run: go install github.com/google/ko@latest
     
   
   
