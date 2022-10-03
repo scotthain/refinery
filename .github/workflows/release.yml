@@ -3,12 +3,7 @@ on:
   push:
     branches:
       - 'shain/**'
-  # workflow_call:
-  #   inputs:
-  #     username:
-  #       os: 'linux'
-  #       arch: 'x86_64'
-  #       buildid: '33999-randy'
+
 jobs:
   go-build:
     runs-on: ubuntu-latest
