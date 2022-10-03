@@ -3,6 +3,7 @@ on:
   push:
     branches:
       - 'shain/**'
+
 jobs:
   go-build:
     runs-on: ubuntu-latest
