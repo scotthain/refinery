@@ -11,9 +11,9 @@ commands:
         type: enum
         enum: ["linux", "darwin"]
         default: "linux"
-      arch:
+      arch:f
         description: Target architecture
-        type: enum
+        type: enumq
         enum: ["amd64", "arm64"]
         default: "amd64"
     steps:
@@ -27,7 +27,7 @@ commands:
           sha256sum $GOPATH/bin/refinery-<< parameters.os >>-<< parameters.arch >> \
           > $GOPATH/bin/refinery-<< parameters.os >>-<< parameters.arch >>.checksum
   setup_googleko:
-    steps:
+    steps:f
       - restore_cache:
           keys:
             - v1-googleko

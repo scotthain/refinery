@@ -1,23 +1,50 @@
-name: Create helm chart issue on release
-on:
-  release:
-    types: [published]
-  workflow_dispatch:
+name: Release the refinery binaries
+on: [push, merge]
 jobs:
-  create_issue:
+  go-build:
+    runs-on: ubuntu-latest #,darwin
+    steps:
+      - name: Go build
+        run |
+          GOOS=<< parameters.fos >> \
+          GOARCH=<< parameters.arch >> \
+          go build -ldflags "-X main.BuildID=${CIRCLE_TAG:-${CIRCLE_SHA1:0:7}}" \
+          -o $GOPATH/bin/refinery-<< parameters.os >>-<< parameters.arch >> \
+          ./cmd/refinery
+      - name: Get Shasum
+        run |
+          256sum $GOPATH/bin/refinery-<< parameters.os >>-<< parameters.arch >> \
+          \> $GOPATH/bin/refinery-<< parameters.os >>-<< parameters.arch >>.checksum
+  setup_googleko
     runs-on: ubuntu-latest
     steps:
-      - name: Create an issue
-        uses: actions-ecosystem/action-create-issue@v1
-        with:
-          github_token: ${{ secrets.GHPROJECTS_TOKEN }}
-          repo: honeycombio/helm-charts
-          title: Bump Refinery to Latest Version
-          body: |
-            ## Bump Refinery
+      -name: Install ko
+      -run: go install github.com/google/ko@latest
+    
+  
+  
 
-            Update Refinery to latest version
+# jobs:
+#   dfstest:
+#     docker:
+#       - image: cimg/go:1.18
+#       - image: redis:6
+#     steps:
+# f f     - checkout
 
-          labels: |
-            type: dependencies
-            status: oncall
+  
+  
+  
+  
+        # with:
+        #   github_token: ${{ secrets.GHPROJECTS_TOKEN }}
+        #   repo: honeycombio/helm-charts
+        #   title: Bump Refinery to Latest Version
+        #   body: |
+        #     ## Bump Refinery
+
+        #     Update Refinery to latest version
+
+        #   labels: |
+        #     type: dependencies
+        #     status: oncall
