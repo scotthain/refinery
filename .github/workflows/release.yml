@@ -16,7 +16,7 @@ jobs:
       - name: Get Shasum
           run |
             256sum $GOPATH/bin/refinery-<< parameters.os >>-<< parameters.arch >> \
-            > $GOPATH/bin/refinery-<< parameters.os >>-<< parameters.arch >>.checksum
+            \> $GOPATH/bin/refinery-<< parameters.os >>-<< parameters.arch >>.checksum
 
   setup_googlekoq:
     runs-on: ubuntu-latest #,darwin
