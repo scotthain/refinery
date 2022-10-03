@@ -16,12 +16,12 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
       - name: Go build
-          run |
-            GOOS=${{ inputs.os }} \
-            GOARCH=${{ inputs.arch }} \
-            go build -ldflags "-X main.BuildID=${{ inputs.buildid }}" \
-            -o $GOPATH/bin/refinery-${{ inputs.os }}-${{ inputs.arch }} \
-            ./cmd/refinery
+        run |
+          GOOS=${{ inputs.os }} \
+          GOARCH=${{ inputs.arch }} \
+          go build -ldflags "-X main.BuildID=${{ inputs.buildid }}" \
+          -o $GOPATH/bin/refinery-${{ inputs.os }}-${{ inputs.arch }} \
+          ./cmd/refinery
 
 
 
