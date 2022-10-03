@@ -4,7 +4,7 @@ on:
     branches:
       - 'shain/**'
   pull_request:
-    branches-ignore:
+    branches_ignore:
       - main
 
 jobs:
