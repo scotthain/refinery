@@ -2,9 +2,7 @@ name: Release the refinery binaries
 on:
   push:
     branches:
-      - 'shain/**'
-      - main
-  workflow_dispatch:
+      - 'shain/gha'
 
 jobs:
   go-build:
@@ -13,4 +11,4 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
       - name: Go build
-        run: echo FUUUUPPPPPMFFF
+        run: echo 'FUUUUPPPPPMFFF'
