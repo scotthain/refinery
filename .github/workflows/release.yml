@@ -3,7 +3,7 @@ on:
   push:
     branches:
       - 'shain/**'
-  pull-request:
+  pull_request:
     branches-ignore:
       - main
 
