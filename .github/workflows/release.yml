@@ -3,6 +3,8 @@ on:
   push:
     branches:
       - 'shain/**'
+    branches-ignore:
+      - main
 
 jobs:
   go-build:
