@@ -14,14 +14,14 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
       - name: Go build
-        run |
+        run: |
           GOOS=<< parameters.fos >> \
           GOARCH=<< parameters.arch >> \
           go build -ldflags "-X main.BuildID=${CIRCLE_TAG:-${CIRCLE_SHA1:0:7}}" \
           -o $GOPATH/bin/refinery-<< parameters.os >>-<< parameters.arch >> \
           ./cmd/refinery
       - name: Get Shasum
-        run |
+        run: |
           256sum $GOPATH/bin/refinery-<< parameters.os >>-<< parameters.arch >> \
           \> $GOPATH/bin/refinery-<< parameters.os >>-<< parameters.arch >>.checksum
 
