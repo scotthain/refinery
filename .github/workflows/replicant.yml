@@ -18,9 +18,7 @@ jobs:
           echo "why god why"
       - name: Get Shasum
         run: |
-          echo "butt noooo" \
-          echo "we all booo"
-
+          echo "butt noooo" 
 
   setup_googleko:
     runs-on: ubuntu-latest
